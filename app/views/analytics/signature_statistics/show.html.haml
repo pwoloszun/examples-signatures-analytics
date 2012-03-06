@@ -1,0 +1,25 @@
+%h1
+  = I18n.t("analytics.signatures.show.title", name: @signature.name)
+.row
+  %h4
+    = I18n.t("analytics.signatures.current_month.impressions", impressions_count: @current_month_statistics.impressions_count)
+  %h4
+    = I18n.t("analytics.signatures.all_time.impressions", impressions_count: @all_time_statistics.impressions_count)
+.row
+  %h3
+    = I18n.t("analytics.signatures.show.links.clicks_statistics")
+  %table
+    %tr{class: "blue"}
+      - [:url, :current_month, :all_time].each do |header|
+        %th
+          = I18n.t("analytics.signatures.show.links.headers.#{header}")
+    - @all_links_data.each_pair do |link, stats|
+      %tr{rel: "link_#{link.id}"}
+        %td
+          = link.href
+        %td
+          = stats[:current_month].clicks_count
+        %td
+          = stats[:all_time].clicks_count
+.row
+  = link_to(I18n.t("app.back"), signatures_path, :class => "btn")

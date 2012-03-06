@@ -1,0 +1,12 @@
+= @control_button
+.modal.hide.fade{id: @modal_id}
+  .modal-header
+    %a.close{"data-dismiss" => "modal"}
+      x
+    %h3
+      = @title
+  .modal-body
+    = @message
+  .modal-footer
+    = @confirm_button
+    = @cancel_button

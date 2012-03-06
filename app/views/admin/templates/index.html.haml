@@ -1,0 +1,23 @@
+%h1
+  Listing Templates
+%div
+  %table{rel: 'templates-list'}
+    %tr
+      %th
+        Name
+      %th{colspan: 4}
+        Actions
+    - @templates.each do |template|
+      %tr{rel: template.id}
+        %td
+          = template.name
+        %td
+          = template.show_button
+        %td
+          = template.preview_button
+        %td
+          = template.edit_button
+        %td
+          = template.destroy_button
+%p
+  = link_to I18n.t("admin.templates.list.new"), new_admin_template_path, class: "btn primary"
